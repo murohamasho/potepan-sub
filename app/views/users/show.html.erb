@@ -6,12 +6,16 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <% if current_user?(@user) %>
-        <%= link_to "Settings", edit_user_path(current_user) %>
-      <% end %>
+      <%= @user.introduction %>
+      
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
+    </section>
+    <section class="setting">
+        <% if current_user?(@user) %>
+          <%= link_to "Settings", edit_user_path(current_user) %>
+        <% end %>
     </section>
   </aside>
   <div class="col-md-8">

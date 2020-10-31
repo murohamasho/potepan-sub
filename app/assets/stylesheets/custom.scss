@@ -148,6 +148,12 @@ aside {
     display: block;
   }
 }
+.setting {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+  text-align: right;
+}
 
 .user_avatars {
   overflow: auto;
