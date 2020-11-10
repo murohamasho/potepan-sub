@@ -5,6 +5,8 @@ class MicropostsController < ApplicationController
   def show
     @micropost = Micropost.find_by(id: params[:id])
     @user      = @micropost.user
+    @comment   = Comment.new #新規コメント用
+    @comments  = @micropost.comments
   end
   
   def new
@@ -13,9 +15,7 @@ class MicropostsController < ApplicationController
   
   def create
     @micropost = current_user.microposts.build(micropost_params)
-    
     @micropost.image.attach(params[:micropost][:image])
-    
     if @micropost.save
       flash[:success] = "Micropost created!"
       redirect_to @micropost
