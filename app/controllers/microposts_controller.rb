@@ -30,6 +30,8 @@ class MicropostsController < ApplicationController
     flash[:success] = "Micropost deleted"
     redirect_to request.referrer || root_url
   end
+  
+  
 
   private
     def micropost_params
