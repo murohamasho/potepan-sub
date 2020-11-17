@@ -18,9 +18,13 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:new, :show, :create, :destroy] do
-    resources :comments,            only: [:create, :destroy]
+    resources :comments,          only: [:create, :destroy]
   end
   resources :relationships,       only: [:create, :destroy]
-  resources :likes,       only: [:create, :destroy]
-  
+  resources :likes,               only: [:create, :destroy]
+  resources :notifications,       only: [:index] do 
+    collection do
+      delete 'destroy_all'
+    end
+  end
 end
