@@ -4,6 +4,10 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
+      <section class="user_info2">
+      <span><%= pluralize(current_user.microposts.count, "micropost") %></span>
+        <%= link_to @user.url,@user.url%>
+      </section>
       <section class="micropost_form">
         <%= render 'shared/micropost_form' %>
       </section>

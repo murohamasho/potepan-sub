@@ -71,7 +71,12 @@ class UsersController < ApplicationController
                                     :email,
                                     :password,
                                     :password_confirmation,
-                                    :introduction)
+                                    :introduction,
+                                    :screen_name,
+                                    :phone_number,
+                                    :birthday,
+                                    :url,
+                                    :sex)
     end
     
     

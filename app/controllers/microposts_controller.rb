@@ -11,6 +11,7 @@ class MicropostsController < ApplicationController
   
   def new
     @micropost  = current_user.microposts.build
+    @user = current_user
   end
   
   def create
@@ -26,9 +27,10 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
+    @user= @micropost.user
     @micropost.destroy
     flash[:success] = "Micropost deleted"
-    redirect_to request.referrer || root_url
+    redirect_to @user
   end
   
   
