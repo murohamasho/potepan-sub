@@ -8,7 +8,7 @@ class Micropost < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
   validates :user_id, presence: true
   validates :content, presence: true, length: { maximum: 140 }
-  validates :image,   content_type: { in: %w[image/jpeg image/gif image/png],
+  validates :image,   presence: true, content_type: { in: %w[image/jpeg image/gif image/png],
                                            message: "must be a valid image format" },
                                               size: { less_than: 5.megabytes,
                                            message: "should be less than 5MB" }
@@ -72,6 +72,11 @@ class Micropost < ApplicationRecord
       notification.checked = true
     end
     notification.save if notification.valid?
+  end
+  
+  def self.search(search)
+    return Post.all unless search
+    Micropost.where(['content LIKE ?', "%#{search}%"])
   end
   
 end

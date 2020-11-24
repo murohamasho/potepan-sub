@@ -1,0 +1,4 @@
+<span><%= pluralize(@user.microposts.count, "micropost") %></span>
+<% if @user.url %>
+  <%= link_to @user.url,@user.url%>
+<% end %>

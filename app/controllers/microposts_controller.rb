@@ -17,12 +17,12 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.image.attach(params[:micropost][:image])
+    @user = current_user
     if @micropost.save
       flash[:success] = "Micropost created!"
       redirect_to @micropost
     else
-      @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'new'
+      render new_micropost_path
     end
   end
 
@@ -31,6 +31,10 @@ class MicropostsController < ApplicationController
     @micropost.destroy
     flash[:success] = "Micropost deleted"
     redirect_to @user
+  end
+  
+  def search
+    @microposts = Micropost.search(params[:search]).paginate(page: params[:page])
   end
   
   

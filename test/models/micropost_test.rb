@@ -4,6 +4,7 @@ class MicropostTest < ActiveSupport::TestCase
   def setup
     @user = users(:michael)
     @micropost = @user.microposts.build(content: "Lorem ipsum")
+    @micropost.image.attach(io: File.open("app/assets/images/test_1.jpg"), filename: "test_.jpg")
   end
 
   test "should be valid" do

@@ -1,0 +1,13 @@
+<% provide(:title, 'Search List') %>
+<h1>Search List</h1>
+<%= form_tag(search_microposts_path,:method => 'get') do %>
+  <%= text_field_tag :search,params[:search] %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+<div class="col-md-12">
+  <%= will_paginate @microposts %>
+  <ol class="microposts">
+    <%= render @microposts %>
+  </ol>
+  <%= will_paginate @microposts %>
+</div>
