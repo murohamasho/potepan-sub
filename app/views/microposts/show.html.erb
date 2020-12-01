@@ -1,3 +1,4 @@
+<% provide(:title, 'Micropost show') %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
@@ -14,9 +15,6 @@
     <h3>Micropost</h3>
     <ol class="microposts">
       <%= render @micropost %>
-      <span class="content">
-        <%= @micropost.content %>
-      </span>
     </ol>
     <%= render 'shared/comment_form' %>
     <%= render 'shared/comments'%>

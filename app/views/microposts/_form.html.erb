@@ -1,0 +1,15 @@
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <%= form_with(model: @micropost, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <span class="image">
+    <%= f.file_field :image, accept: "image/jpeg,image/gif,image/png" %>
+  </span>
+  <div class="field">
+    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
+  
+<% end %>
+  </div>
+</div>

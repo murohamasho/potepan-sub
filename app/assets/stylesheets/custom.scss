@@ -33,6 +33,7 @@ textarea {
   }
 }
 
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -135,7 +136,14 @@ aside {
 
 .gravatar_edit {
   margin-top: 15px;
+  .gravatar {
+    float: none;
+  }
 }
+.btn {
+  margin-top: 15px;
+}
+
 
 .stats {
   overflow: auto;
@@ -168,7 +176,7 @@ aside {
   overflow: auto;
   margin-top: 0;
   padding: 0;
-  text-align: right;
+  text-align: left;
 }
 
 .user_avatars {
@@ -256,10 +264,13 @@ input {
   padding: 0;
   display:flex;
   flex-wrap: wrap;
-  li {
+  .post_item {
     padding: 10px 0;
     border-top: 1px solid #e8e8e8;
     width: calc(33.3% - 10px);
+  }
+  .post_show{
+    width: 100%
   }
   .user {
     margin-top: 5em;
@@ -269,11 +280,11 @@ input {
     display: block;
     margin-left: 60px;
     overflow: hidden;
-    img {
+    .post_img {
       display: block;
       padding: 5px 0;
-      height: 200px;
-      width: 200px;
+      height: 100px;
+      width: 100px;
     }
   }
   .timestamp {
@@ -289,6 +300,7 @@ input {
   }
 }
 
+
 aside {
   textarea {
     height: 100px;
@@ -301,4 +313,21 @@ span.image {
   input {
     border: 0;
   }
+}
+
+
+/* modal */
+.modal_microposts {
+  li {
+    width:100%;
+  }
+  .content {
+    margin: 0;
+    text-align: center;
+  }
+  
+}
+.modal_img {
+  height: 300px;
+  width : 300px;
 }

@@ -12,7 +12,9 @@
     </section>
     <section class="setting">
         <% if current_user?(@user) %>
-          <%= link_to "Settings", edit_user_path(current_user) %>
+          <%= link_to edit_user_path(current_user) do %>
+            <i class="fa fa-cog "></i>setting 
+          <% end %>
         <% end %>
     </section>
   </aside>

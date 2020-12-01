@@ -43,11 +43,23 @@ users = User.order(:created_at).take(6)
 30.times do
   content = Faker::Lorem.sentence(word_count: 5)
   users.each { |user|
-    @post =user.microposts.create!(content: content)
+    @post =user.microposts.new(content: content) 
     @post.image.attach(io: File.open("app/assets/images/test_#{rand(1..10)}.jpg"), filename: "test_#{rand(1..10)}.jpg")
+    @post.save
   }
   
 end
+#マイクロポストの一部を対象に一部ユーザーからのコメントを生成
+microposts = Micropost.order(:created_at).take(30)
+users      = User.order(:created_at).take(3)
+microposts.each { |micropost|
+  users.each { |user|
+    content = Faker::Lorem.sentence(word_count: 3)
+    Comment.create!(micropost_id: micropost.id,
+                        content: content,
+                        user_id: user.id)
+  }
+}
 
 
 # 以下のリレーションシップを作成する
