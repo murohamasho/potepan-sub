@@ -11,11 +11,9 @@
     <div class="">
       <% if current_user?(@user) %>
         <%= button_to "Account delete", @user, method: :delete,
-                                       data: { confirm: "You sure?" },
-                                       class: 'btn btn-primary account_delete'
-                                       %>
+                                                 data: { confirm: "You sure?" },
+                                                class: 'btn btn-primary account_delete'%>
       <% end %>
     </div>
   </div>
-  
 </div>

@@ -2,10 +2,8 @@
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.label :name, {class: 'topic'} %>
   <%= f.text_field :name, class: 'form-control'%>
-  
   <%= f.label :screen_name,{class: 'topic'} %>
   <%= f.text_field :screen_name, class: 'form-control' %>
-
   <%= f.label :email, {class: 'topic'} %>
   <%= f.email_field :email, class: 'form-control' %>
   
@@ -32,9 +30,7 @@
   
   <%= f.label :password, {class: 'topic'} %>
   <%= f.password_field :password, class: 'form-control' %>
-  
   <%= f.label :password_confirmation, {class: 'topic'} %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
-
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
