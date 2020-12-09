@@ -1,0 +1,11 @@
+<% visiter = notification.visiter %>
+<% micropost = notification.micropost %>
+
+<div class="user-view clearfix ">
+  <%= gravatar_for visiter, size: 50 %>
+  <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} ago)" %></span>
+  <br>
+  <% if !@comment.nil? %>
+    <p class="moderate-font text-left" style="color: #C0C0C0;"><%= @comment %></p>
+  <% end %>
+</div>

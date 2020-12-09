@@ -1,0 +1,24 @@
+<li id="micropost-<%= micropost.id %>" class="post_item<%= ' post_show' if controller.controller_name=="microposts"&& controller.action_name=="show"||controller.controller_name=="comments"%>">
+  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
+  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <span class="content">
+    <% if controller.controller_name=="microposts"&& controller.action_name=="show"||controller.controller_name=="comments" %>
+      <%= image_tag(micropost.display_image, class: "image") if micropost.image.attached? %><br>
+      <%= micropost.content%>
+    <% else %>
+      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#sampleModal-<%= micropost.id%>">
+        <%= image_tag(micropost.display_image, class: "image post_img") if micropost.image.attached? %>
+      </button>
+    <% end %>
+    <!-- Modal -->
+    <%= render 'microposts/modal',micropost: micropost%>
+  </span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+    <% if current_user?(micropost.user) %>
+      <%= link_to "delete", micropost, method: :delete,
+                                         data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+  <%= render "likes/like", micropost: micropost %>
+</li>

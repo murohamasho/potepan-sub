@@ -1,0 +1,22 @@
+<% provide(:title, 'Micropost show') %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= render 'shared/user_info' %>
+    </section>
+    <section class="user_info2">
+      <%= render 'shared/user_info2' %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <h3>Micropost</h3>
+    <ol class="microposts">
+      <%= render @micropost %>
+    </ol>
+    <%= render 'shared/comment_form' %>
+    <%= render 'shared/comments'%>
+  </div>
+</div>  

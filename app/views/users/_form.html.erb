@@ -1,0 +1,36 @@
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.label :name, {class: 'topic'} %>
+  <%= f.text_field :name, class: 'form-control'%>
+  <%= f.label :screen_name,{class: 'topic'} %>
+  <%= f.text_field :screen_name, class: 'form-control' %>
+  <%= f.label :email, {class: 'topic'} %>
+  <%= f.email_field :email, class: 'form-control' %>
+  
+  <!--  ログイン時フォーム入力   -->
+  <% if logged_in? %>
+    <%= f.label :phone_number, {class: 'topic'} %>
+    <%= f.number_field :phone_number, class: 'form-control' %>
+  
+    <%= f.label :Sex, {class: 'topic'} %><br/>
+    <%= f.label :man%>
+    <%= f.radio_button :sex, :man%>
+    <%= f.label :woman  %>
+    <%= f.radio_button :sex, :woman%><br />
+  
+    <%= f.label :birthday, {class: 'topic'} %><br/>
+    <%= f.date_select :birthday, class: 'form-control',prompt:"--" %><br/>
+  
+    <%= f.label :introduction, {class: 'topic'} %>
+    <%= f.text_area :introduction, class: 'form-control' %>
+  
+    <%= f.label :url, {class: 'topic'} %>
+    <%= f.text_field :url, class: 'form-control' %>
+  <% end %>
+  
+  <%= f.label :password, {class: 'topic'} %>
+  <%= f.password_field :password, class: 'form-control' %>
+  <%= f.label :password_confirmation, {class: 'topic'} %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

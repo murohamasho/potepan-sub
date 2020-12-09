@@ -1,0 +1,45 @@
+<div class="modal fade" id="sampleModal-<%= micropost.id%>" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+				<aside>
+					<section class="user_info">
+						<h1>
+  						<%= gravatar_for micropost.user %>
+  						<%= link_to micropost.user.name, micropost.user %>
+						</h1>
+						<p class="text-secondary">
+ 					 		<%= micropost.user.screen_name %>
+						</p>
+ 						<%= micropost.user.introduction %>
+ 					</section>
+ 				</aside>
+			</div>
+			<div class="modal-body">
+				<ol class="microposts modal_microposts">
+					<li>
+						<span class="content">
+							<%= link_to image_tag(micropost.display_image, class: "image modal_img"), micropost if micropost.image.attached?%><br>
+							<%= micropost.content %>
+						</span>
+						<span class="timestamp">
+    					Posted <%= time_ago_in_words(micropost.created_at) %> ago.
+  					</span>
+  					
+					</li>
+				</ol>
+			</div>
+			<div class="modal-footer">
+				<sapn>
+  				<%= form_with(model: [micropost,Comment.new], local: true) do |f| %>
+    				<div class = 'form-group'>
+      				<%= f.text_area :content, placeholder: "Compose new comments..." %>
+    				</div>
+    				<%= f.submit "Comment", class: "btn btn-primary" %>
+					<% end %>
+  			</sapn>
+			</div>
+		</div>
+	</div>
+</div>
